@@ -97,6 +97,10 @@ const App = () => {
     setSelectedNode(null);
   };
 
+  const isSelectedNodeExists = nodes.find(
+    (node) => selectedNode && selectedNode.id === node.id
+  );
+
   return (
     <div className="w-screen h-screen relative">
       <button
@@ -107,7 +111,7 @@ const App = () => {
         Create Node
       </button>
       <div className="bg-gray-200 rounded-xl z-40 absolute right-0 m-5">
-        {selectedNode && (
+        {isSelectedNodeExists && selectedNode && (
           <div className="p-4 border-2 border-gray-400 rounded-xl">
             <input
               value={selectedNode?.data?.label}
