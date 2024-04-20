@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useMemo } from "react";
 import ReactFlow, {
   Controls,
   Background,
@@ -7,12 +7,16 @@ import ReactFlow, {
   addEdge,
 } from "reactflow";
 import "reactflow/dist/style.css";
+import CustomNode from "./components/CustomNode.jsx";
+import CustomEdge from "./components/CustomEdge.jsx";
 
 const App = () => {
   const [selectedNode, setSelectedNode] = useState(null);
   const ref = useRef(null);
   const [nodes, setNodes] = useState([]);
   const [edges, setEdges] = useState([]);
+  const nodeTypes = useMemo(() => ({ custom: CustomNode }), []);
+  const edgeTypes = useMemo(() => ({ custom_edge: CustomEdge }), []);
 
   const onNodesChange = useCallback(
     (changes) => {
@@ -33,8 +37,11 @@ const App = () => {
   );
 
   const onConnect = useCallback(
-    (params) => setEdges((eds) => addEdge(params, eds)),
-    []
+    (params) => {
+      const edge = { ...params, type: "custom_edge" };
+      setEdges((eds) => addEdge(edge, eds));
+    },
+    [setEdges]
   );
 
   const handleCreateNode = () => {
@@ -44,7 +51,7 @@ const App = () => {
           id: "1",
           position: { x: 0, y: 0 },
           data: { label: "Node 1" },
-          type: "default",
+          type: "custom",
         },
       ]);
       return;
@@ -63,7 +70,7 @@ const App = () => {
         id,
         position: { x: 0, y: largestY + 100 },
         data: { label: "Node " + id },
-        type: "default",
+        type: "custom",
       },
     ]);
   };
@@ -139,6 +146,8 @@ const App = () => {
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
         fitView
+        nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}
       >
         <Background className="z-0" />
         <Controls className="z-10" />
