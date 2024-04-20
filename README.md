@@ -1,8 +1,52 @@
-# React + Vite
+# ReactFlow Render
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Developed a web app using React Flow library which provides CUD (Create, Update, Delete) for building node-based editors and interactive diagrams
 
-Currently, two official plugins are available:
+Watch the YouTube Demo here: https://youtu.be/0c9ljLWw4s0
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<img style="width: 90%" src="./screenshots/demo.png">
+
+## Features 🌟
+
+- Create node
+- Delete Node
+- Edit Node Name
+- Delete Edge
+- Connect Nodes via Edges
+
+## Technologies Used 💻
+
+- **React.js**: For building the user interface.
+- **React Flow**: Library for building node based interactive diagrams.
+- **Redux**: For state management.
+- **Tailwind CSS**: For styling the application.
+- **Vite**: As a web application bundler.
+
+## Getting Started 🚀
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+- Node.js
+- npm
+
+### Installation
+
+1. Clone the repo and go to cloned directory
+   ```sh
+   git clone https://github.com/heymitali/react-flow.git; cd react-flow
+   ```
+2. Install NPM packages
+
+   ```sh
+   npm install
+   ```
+
+3. Build and Start the server
+
+   ```sh
+   npm run dev
+   ```
+
+4. Open your browser and navigate to http://localhost:5173
