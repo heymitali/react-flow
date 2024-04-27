@@ -1,4 +1,4 @@
-# ReactFlow Render
+# ReactFlow Renderer
 
 Developed a web app using React Flow library which provides CUD (Create, Update, Delete) operations for building node-based editors and interactive diagrams
 
